@@ -7,12 +7,11 @@ export default function Home() {
   const [searchParams] = useSearchParams();
 
   useEffect(() => {
-
-  fetch(process.env.REACT_APP_API_URL + '/products?' + searchParams)
-  .then(res => res.json())
-  .then(data => setProducts(data.products));
-
-}, [searchParams]);
+    fetch(process.env.REACT_APP_API_URL + "/products?" + searchParams)
+      .then((res) => res.json())
+      .then((data) => setProducts(data.products));
+    console.log(products);
+  }, [searchParams]);
 
   return (
     <Fragment>
@@ -20,7 +19,7 @@ export default function Home() {
 
       <section id="products" className="container mt-5">
         <div className="row">
-          {products.map(product => (
+          {products.map((product) => (
             <ProductCard key={product._id} product={product} />
           ))}
         </div>
